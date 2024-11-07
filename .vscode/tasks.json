@@ -7,7 +7,10 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "max.c",
+                "min.c",
+                "var.c",
+                "testall.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
