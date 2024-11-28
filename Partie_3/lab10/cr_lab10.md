@@ -29,12 +29,7 @@ signifie que le fichier exécutable main n'a pas été trouvé dans le répertoi
 echo $LD_LIBRARY_PATH
  c'est vide
 ## **Partie_8 : Ajouter /opt/lib à LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/opt/lib:$LD_LIBRARY_PATH
-source ~/.bashrc
-echo $LD_LIBRARY_PATH
-
-La variable LD_LIBRARY_PATH permet de spécifier où chercher les bibliothèques partagées lors de l'exécution.
-Si elle est vide, le système utilise les répertoires par défaut.
+ldd
 
 /opt/lib: comme contenu de la variable LD_LIBRARY_PATH, cela signifie que /opt/lib est le répertoire dans lequel le système va chercher les bibliothèques partagées au moment de l'exécution
 

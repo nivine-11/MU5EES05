@@ -1,27 +1,31 @@
-
-# Variables
 CC = gcc
-CFLAGS = -Wall -I. -fPIC
-LDFLAGS = -shared
-BINARY = my-binary
-LIBRARY = liboutils.so
-INSTALL_DIR = $(HOME)
-OBJ_FILES = max.o min.o var.o test.o
 
-# Cibles par défaut
-all: $(BINARY)
+Objets = max.o min.o var.o testall.o 
+direc = /home/nivine/
+CC_OPTIONS = 
+DEBUG = yes
+Toto = my-binary
 
-# Création des fichiers objets
-max.o: max.c max.h
-    $(CC) $(CFLAGS) -c max.c -o max.o
+ifeq ($(DEBUG),no)
+	CC_OPTIONS = -Wall
+	else
+	CC_OPTIONS = -g -Wall
+endif
+install: $(Toto)
+	cp $(Toto) ${direc}
 
-min.o: min.c min.h
-    $(CC) $(CFLAGS) -c min.c -o min.o
+my-binary :  $(Objets)
+	echo $(CC_OPTIONS)
+	${CC} $(CC_OPTIONS) $^ -o $(Toto)
 
-var.o: var.c var.h
-    $(CC) $(CFLAGS) -c var.c -o var.o
+max.o: max.c
+	$(CC) $(CFLAGS) -c $^ -o $@
+min.o: min.c 
+	$(CC) $(CFLAGS) -c $^ -o $@
+var.o: var.c 
+	$(CC) $(CFLAGS) -c $^ -o $@
+testall.o: testall.c 
+	$(CC) $(CFLAGS) -c $^ -o $@	
 
-test.o: main.c max.h min.h var.h
-    $(CC) $(CFLAGS) -c main.c -o test.o
-
-# Création de la bibliothèque partagée
+clean: 
+	rm ${Objets} my-binary
